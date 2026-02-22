@@ -33,16 +33,11 @@ public class DingtalkJobAlarm implements JobAlarm {
     @Value("${xxl.job.alarm.dingtalk.webhook:}")
     private String dingtalkWebhook;
 
-    @Value("${xxl.job.alarm.dingtalk.secret:}")
-    private String dingtalkSecret;
-
     private RestTemplate restTemplate = new RestTemplate();
 
     @Override
     public boolean doAlarm(XxlJobInfo info, XxlJobLog jobLog) {
         boolean alarmResult = true;
-
-        System.out.println("do DingtalkJobAlarm");
 
         // check dingtalk webhook config
         if (dingtalkWebhook == null || dingtalkWebhook.trim().isEmpty()) {
